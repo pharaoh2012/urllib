@@ -1,10 +1,11 @@
 var request = require('request');
 var Iconv = require('iconv-lite');
+var cheerio = require('cheerio');
 
 var useragents = {
-	"pc": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
-	"android": "",
-	"ios": ""
+	"pc": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+	"android": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Mobile Safari/537.36",
+	"ios": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
 };
 var defaultOption = {
 	trycount: 1,
@@ -56,6 +57,10 @@ async function get(option, params) {
 	if (!headers["user-agent"]) {
 		headers["user-agent"] = getUserAgent(dParams.useragent);
 	}
+	if (!headers["referer"]) {
+		headers["referer"] = op.url;
+	}	
+	op.headers = headers;
 	if (dParams.encoding) {
 		op.encoding = null;
 	}
@@ -75,5 +80,17 @@ async function get(option, params) {
 
 }
 
+async function getJSON(option, params) {
+	let body = get(option,params);
+	return JSON.parse(body);
+}
+
+async function get$(option, params) {
+	let body = get(option,params);
+	return cheerio.load(body);
+}
+
 
 exports.get = get;
+exports.getJSON = getJSON;
+exports.get$ = get$;
