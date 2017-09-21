@@ -21,12 +21,12 @@ test("http://www.baidu.com/");
 ```
 
 # api
-`urllib.get(option,params);` 获取网页文本 
-`urllib.getJSON(option,params);` 获取JSON 
-`urllib.get$(option,params);`  获取[cheerio](https://github.com/cheeriojs/cheerio) 
+`urllib.get(option,params);` 获取网页文本   
+`urllib.getJSON(option,params);` 获取JSON   
+`urllib.get$(option,params);`  获取[cheerio](https://github.com/cheeriojs/cheerio)   
 
 # 参数
-`option` 见[request](https://github.com/request/request)的参数
+`option` 见[request](https://github.com/request/request#requestoptions-callback)的参数
 `params` Object,默认值如下：
 ```
 var defaultOption = {
@@ -35,3 +35,4 @@ var defaultOption = {
 	useragent: "pc" //pc,android,ios
 };
 ```
+
