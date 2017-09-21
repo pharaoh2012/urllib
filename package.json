@@ -1,0 +1,23 @@
+{
+  "name": "urllib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/pharaoh/urllib.git"
+  },
+  "keywords": [
+    "url",
+    "get"
+  ],
+  "author": "pharaoh",
+  "license": "ISC",
+  "dependencies": {
+    "iconv-lite": "^0.4.19",
+    "request": "^2.82.0"
+  }
+}
