@@ -81,12 +81,12 @@ async function get(option, params) {
 }
 
 async function getJSON(option, params) {
-	let body = get(option,params);
+	let body = await get(option,params);
 	return JSON.parse(body);
 }
 
 async function get$(option, params) {
-	let body = get(option,params);
+	let body = await get(option,params);
 	return cheerio.load(body);
 }
 
